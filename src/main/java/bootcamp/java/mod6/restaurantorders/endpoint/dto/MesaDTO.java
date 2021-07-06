@@ -1,4 +1,4 @@
-package bootcamp.java.mod6.restaurantorders.dto;
+package bootcamp.java.mod6.restaurantorders.endpoint.dto;
 
 import bootcamp.java.mod6.restaurantorders.entity.IEntity;
 
@@ -7,22 +7,22 @@ import java.util.List;
 public class MesaDTO implements IEntity {
     private int id;
     private double valorTotalConsumido;
-    private List<PedidoOutputDTO> pedidos;
+    private List<PedidoDTO> pedidos;
 
     public MesaDTO() {
     }
 
-    public MesaDTO(int id, double valorTotalConsumido, List<PedidoOutputDTO> pedidos) {
+    public MesaDTO(int id, double valorTotalConsumido, List<PedidoDTO> pedidos) {
         this.id = id;
         this.pedidos = pedidos;
         this.valorTotalConsumido = valorTotalConsumido;
     }
 
-    public List<PedidoOutputDTO> getPedidos() {
+    public List<PedidoDTO> getPedidos() {
         return pedidos;
     }
 
-    public void setPedidos(List<PedidoOutputDTO> pedidos) {
+    public void setPedidos(List<PedidoDTO> pedidos) {
         this.pedidos = pedidos;
     }
 

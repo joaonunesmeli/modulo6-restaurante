@@ -1,15 +1,15 @@
-package bootcamp.java.mod6.restaurantorders.dto;
+package bootcamp.java.mod6.restaurantorders.endpoint.dto;
 
 import bootcamp.java.mod6.restaurantorders.entity.IEntity;
 
 import java.util.List;
 
-public class PedidoOutputDTO implements IEntity {
+public class PedidoDTO implements IEntity {
     private int id;
     private double valor;
     private List<PratoDTO> pratos;
 
-    public PedidoOutputDTO(int id, double valor, List<PratoDTO> pratos) {
+    public PedidoDTO(int id, double valor, List<PratoDTO> pratos) {
         this.id = id;
         this.valor = valor;
         this.pratos = pratos;

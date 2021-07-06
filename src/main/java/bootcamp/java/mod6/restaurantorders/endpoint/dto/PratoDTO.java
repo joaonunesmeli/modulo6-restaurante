@@ -1,4 +1,4 @@
-package bootcamp.java.mod6.restaurantorders.dto;
+package bootcamp.java.mod6.restaurantorders.endpoint.dto;
 
 import bootcamp.java.mod6.restaurantorders.entity.IEntity;
 

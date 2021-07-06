@@ -1,13 +1,12 @@
 package bootcamp.java.mod6.restaurantorders.controller;
 
-import bootcamp.java.mod6.restaurantorders.dto.PratoDTO;
-import bootcamp.java.mod6.restaurantorders.dto.handler.PratoHandler;
+import bootcamp.java.mod6.restaurantorders.endpoint.dto.PratoDTO;
+import bootcamp.java.mod6.restaurantorders.endpoint.handler.PratoHandler;
 import bootcamp.java.mod6.restaurantorders.entity.Prato;
 import bootcamp.java.mod6.restaurantorders.repository.PratoRepository;
 import bootcamp.java.mod6.restaurantorders.service.IOService;
 import bootcamp.java.mod6.restaurantorders.service.MapResponse;
 import bootcamp.java.mod6.restaurantorders.service.Response;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;

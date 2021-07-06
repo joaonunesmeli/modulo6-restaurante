@@ -1,6 +1,6 @@
 package bootcamp.java.mod6.restaurantorders.service;
 
-import bootcamp.java.mod6.restaurantorders.dto.handler.IOutputHandler;
+import bootcamp.java.mod6.restaurantorders.endpoint.handler.IOutputHandler;
 import bootcamp.java.mod6.restaurantorders.entity.IEntity;
 import bootcamp.java.mod6.restaurantorders.repository.Repository;
 

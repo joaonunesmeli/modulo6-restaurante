@@ -1,7 +1,7 @@
-package bootcamp.java.mod6.restaurantorders.dto.handler;
+package bootcamp.java.mod6.restaurantorders.endpoint.handler;
 
-import bootcamp.java.mod6.restaurantorders.dto.MesaDTO;
-import bootcamp.java.mod6.restaurantorders.dto.PedidoOutputDTO;
+import bootcamp.java.mod6.restaurantorders.endpoint.dto.MesaDTO;
+import bootcamp.java.mod6.restaurantorders.endpoint.dto.PedidoDTO;
 import bootcamp.java.mod6.restaurantorders.entity.Mesa;
 import bootcamp.java.mod6.restaurantorders.entity.Pedido;
 
@@ -29,7 +29,7 @@ public class MesaHandler implements IHandler<Mesa, MesaDTO> {
     @Override
     public MesaDTO convert(Mesa o) {
         double total = 0.0;
-        List<PedidoOutputDTO> pedidos = new ArrayList<>();
+        List<PedidoDTO> pedidos = new ArrayList<>();
         if (o.getPedidos() != null) {
             for (Pedido p : o.getPedidos()) {
                 pedidos.add(this.pedidoOutputHandler.convert(p));

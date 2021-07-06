@@ -1,9 +1,9 @@
 package bootcamp.java.mod6.restaurantorders.controller;
 
-import bootcamp.java.mod6.restaurantorders.dto.MesaDTO;
-import bootcamp.java.mod6.restaurantorders.dto.PedidoInputDTO;
-import bootcamp.java.mod6.restaurantorders.dto.PedidoOutputDTO;
-import bootcamp.java.mod6.restaurantorders.dto.handler.*;
+import bootcamp.java.mod6.restaurantorders.endpoint.dto.MesaDTO;
+import bootcamp.java.mod6.restaurantorders.endpoint.form.PedidoForm;
+import bootcamp.java.mod6.restaurantorders.endpoint.dto.PedidoDTO;
+import bootcamp.java.mod6.restaurantorders.endpoint.handler.*;
 import bootcamp.java.mod6.restaurantorders.entity.Caixa;
 import bootcamp.java.mod6.restaurantorders.entity.Mesa;
 import bootcamp.java.mod6.restaurantorders.entity.Pedido;
@@ -24,39 +24,39 @@ import java.util.Optional;
 
 @RestController
 public class MesaController {
-    private IOService<Mesa, MesaDTO> mesaCrud;
+    private IOService<Mesa, MesaDTO> mesaService;
 
     public MesaController() {
         PratoHandler pratoHandler = new PratoHandler();
         MesaHandler handler = new MesaHandler(new PedidoOutputHandler(pratoHandler));
         MesaRepository mesaRepository = new MesaRepository();
-        this.mesaCrud = new IOService<>(mesaRepository, handler);
+        this.mesaService = new IOService<>(mesaRepository, handler);
     }
 
     @PostMapping("/mesas")
     public ResponseEntity<Response<Map<String, Object>>> create(UriComponentsBuilder uriBuilder) throws IOException {
-        return mesaCrud.create(null, uriBuilder);
+        return mesaService.create(null, uriBuilder);
     }
 
     @GetMapping("/mesas/{id}")
     public Response<MesaDTO> get(@PathVariable int id) throws IOException {
-        return mesaCrud.get(id);
+        return mesaService.get(id);
     }
 
     @GetMapping("/mesas/")
     public Response<List<MesaDTO>> getAll() throws IOException {
-        return mesaCrud.getAll();
+        return mesaService.getAll();
     }
 
     @DeleteMapping("/mesas/{id}")
     public MapResponse delete(@PathVariable int id) throws IOException {
-        return mesaCrud.delete(id);
+        return mesaService.delete(id);
     }
 
     // Pedidos ---------------------------------------------------------------------------------------------------------
 
     @PostMapping("/mesas/{mid}/pedidos")
-    public MapResponse createOrder(@PathVariable int mid, @RequestBody PedidoInputDTO dto) throws IOException {
+    public MapResponse createOrder(@PathVariable int mid, @RequestBody PedidoForm dto) throws IOException {
         MapResponse r = new MapResponse(HttpStatus.CREATED);
         MesaRepository mesaRepository = new MesaRepository();
         Mesa mesa = mesaRepository.getById(mid);
@@ -86,9 +86,9 @@ public class MesaController {
     }
 
     @GetMapping("/mesas/{mid}/pedidos/{id}")
-    public Response<PedidoOutputDTO> getOrder(@PathVariable int mid, @PathVariable int id) throws IOException {
+    public Response<PedidoDTO> getOrder(@PathVariable int mid, @PathVariable int id) throws IOException {
         MesaRepository mesaRepository = new MesaRepository();
-        Response<PedidoOutputDTO> r = new Response<PedidoOutputDTO>();
+        Response<PedidoDTO> r = new Response<PedidoDTO>();
         Mesa mesa = mesaRepository.getById(mid);
         if (mesa == null) {
             r.addError("mesa", "Mesa não encontrada");
@@ -121,7 +121,7 @@ public class MesaController {
         mesaRepository.update(mesa);
         r.put("mesa", mid);
         r.put("id", id);
-        return mesaCrud.delete(id);
+        return mesaService.delete(id);
     }
 
     @GetMapping("/mesas/{mid}/fechar")

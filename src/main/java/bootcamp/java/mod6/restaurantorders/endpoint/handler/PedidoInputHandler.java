@@ -1,7 +1,7 @@
-package bootcamp.java.mod6.restaurantorders.dto.handler;
+package bootcamp.java.mod6.restaurantorders.endpoint.handler;
 
-import bootcamp.java.mod6.restaurantorders.dto.PedidoInputDTO;
-import bootcamp.java.mod6.restaurantorders.dto.PratoPedidoInputDTO;
+import bootcamp.java.mod6.restaurantorders.endpoint.form.PedidoForm;
+import bootcamp.java.mod6.restaurantorders.endpoint.form.PratoPedidoForm;
 import bootcamp.java.mod6.restaurantorders.entity.Mesa;
 import bootcamp.java.mod6.restaurantorders.entity.Pedido;
 import bootcamp.java.mod6.restaurantorders.entity.Prato;
@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-public class PedidoInputHandler implements IInputHandler<Pedido, PedidoInputDTO> {
+public class PedidoInputHandler implements IInputHandler<Pedido, PedidoForm> {
     private MesaRepository mesaRepository;
     private PratoPedidoHandler pratoPedidoHandler;
 
@@ -22,9 +22,9 @@ public class PedidoInputHandler implements IInputHandler<Pedido, PedidoInputDTO>
     }
 
     @Override
-    public Pedido create(PedidoInputDTO o) throws IOException {
+    public Pedido create(PedidoForm o) throws IOException {
         List<Prato> pratos = new ArrayList<>();
-        for (PratoPedidoInputDTO ppi : o.getPratos()) {
+        for (PratoPedidoForm ppi : o.getPratos()) {
             pratos.add(pratoPedidoHandler.create(ppi));
         }
 
@@ -38,7 +38,7 @@ public class PedidoInputHandler implements IInputHandler<Pedido, PedidoInputDTO>
     }
 
     @Override
-    public Map<String, String> validate(PedidoInputDTO o) {
+    public Map<String, String> validate(PedidoForm o) {
         return null;
     }
 }

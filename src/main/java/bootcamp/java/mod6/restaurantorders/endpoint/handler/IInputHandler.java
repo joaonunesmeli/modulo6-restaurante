@@ -1,4 +1,4 @@
-package bootcamp.java.mod6.restaurantorders.dto.handler;
+package bootcamp.java.mod6.restaurantorders.endpoint.handler;
 
 import java.io.IOException;
 import java.util.Map;

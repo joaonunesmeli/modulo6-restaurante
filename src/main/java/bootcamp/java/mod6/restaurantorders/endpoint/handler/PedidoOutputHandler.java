@@ -1,14 +1,14 @@
-package bootcamp.java.mod6.restaurantorders.dto.handler;
+package bootcamp.java.mod6.restaurantorders.endpoint.handler;
 
-import bootcamp.java.mod6.restaurantorders.dto.PedidoOutputDTO;
-import bootcamp.java.mod6.restaurantorders.dto.PratoDTO;
+import bootcamp.java.mod6.restaurantorders.endpoint.dto.PedidoDTO;
+import bootcamp.java.mod6.restaurantorders.endpoint.dto.PratoDTO;
 import bootcamp.java.mod6.restaurantorders.entity.Pedido;
 import bootcamp.java.mod6.restaurantorders.entity.Prato;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class PedidoOutputHandler implements IOutputHandler<Pedido, PedidoOutputDTO> {
+public class PedidoOutputHandler implements IOutputHandler<Pedido, PedidoDTO> {
     private PratoHandler pratoHandler;
 
     public PedidoOutputHandler(PratoHandler pratoHandler) {
@@ -16,11 +16,11 @@ public class PedidoOutputHandler implements IOutputHandler<Pedido, PedidoOutputD
     }
 
     @Override
-    public PedidoOutputDTO convert(Pedido o) {
+    public PedidoDTO convert(Pedido o) {
         List<PratoDTO> pratos = new ArrayList<>();
         for (Prato p : o.getPratos()) {
             pratos.add(this.pratoHandler.convert(p));
         }
-        return new PedidoOutputDTO(o.getId(), o.getValor(), pratos);
+        return new PedidoDTO(o.getId(), o.getValor(), pratos);
     }
 }

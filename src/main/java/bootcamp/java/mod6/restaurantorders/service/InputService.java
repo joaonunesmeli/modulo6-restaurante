@@ -1,6 +1,6 @@
 package bootcamp.java.mod6.restaurantorders.service;
 
-import bootcamp.java.mod6.restaurantorders.dto.handler.IInputHandler;
+import bootcamp.java.mod6.restaurantorders.endpoint.handler.IInputHandler;
 import bootcamp.java.mod6.restaurantorders.entity.IEntity;
 import bootcamp.java.mod6.restaurantorders.repository.Repository;
 import org.springframework.http.HttpStatus;

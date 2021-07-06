@@ -1,13 +1,13 @@
-package bootcamp.java.mod6.restaurantorders.dto.handler;
+package bootcamp.java.mod6.restaurantorders.endpoint.handler;
 
-import bootcamp.java.mod6.restaurantorders.dto.PratoPedidoInputDTO;
+import bootcamp.java.mod6.restaurantorders.endpoint.form.PratoPedidoForm;
 import bootcamp.java.mod6.restaurantorders.entity.Prato;
 import bootcamp.java.mod6.restaurantorders.repository.PratoRepository;
 
 import java.io.IOException;
 import java.util.Map;
 
-public class PratoPedidoHandler implements IHandler<Prato, PratoPedidoInputDTO> {
+public class PratoPedidoHandler implements IHandler<Prato, PratoPedidoForm> {
     private PratoRepository repository;
 
     public PratoPedidoHandler(PratoRepository repository) {
@@ -15,18 +15,18 @@ public class PratoPedidoHandler implements IHandler<Prato, PratoPedidoInputDTO> 
     }
 
     @Override
-    public PratoPedidoInputDTO convert(Prato o) {
+    public PratoPedidoForm convert(Prato o) {
         return null; // DTO somente de input
     }
 
     @Override
-    public Prato create(PratoPedidoInputDTO o) throws IOException {
+    public Prato create(PratoPedidoForm o) throws IOException {
         Prato p = repository.getById(o.getId());
         return new Prato(p.getId(), p.getPreco(), p.getDescricao(), o.getQuantidade());
     }
 
     @Override
-    public Map<String, String> validate(PratoPedidoInputDTO o) {
+    public Map<String, String> validate(PratoPedidoForm o) {
         return null;
     }
 }

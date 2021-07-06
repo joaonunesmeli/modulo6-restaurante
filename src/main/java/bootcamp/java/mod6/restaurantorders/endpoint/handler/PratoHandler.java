@@ -1,6 +1,6 @@
-package bootcamp.java.mod6.restaurantorders.dto.handler;
+package bootcamp.java.mod6.restaurantorders.endpoint.handler;
 
-import bootcamp.java.mod6.restaurantorders.dto.PratoDTO;
+import bootcamp.java.mod6.restaurantorders.endpoint.dto.PratoDTO;
 import bootcamp.java.mod6.restaurantorders.entity.Prato;
 
 import java.util.Map;

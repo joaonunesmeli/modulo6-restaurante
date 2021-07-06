@@ -1,15 +1,15 @@
-package bootcamp.java.mod6.restaurantorders.dto;
+package bootcamp.java.mod6.restaurantorders.endpoint.form;
 
 import bootcamp.java.mod6.restaurantorders.entity.IEntity;
 
-public class PratoPedidoInputDTO implements IEntity {
+public class PratoPedidoForm implements IEntity {
     private int id;
     private int quantidade;
 
-    public PratoPedidoInputDTO() {
+    public PratoPedidoForm() {
     }
 
-    public PratoPedidoInputDTO(int id, int quantidade) {
+    public PratoPedidoForm(int id, int quantidade) {
         this.id = id;
         this.quantidade = quantidade;
     }
