@@ -2,8 +2,9 @@ package bootcamp.java.mod6.restaurantorders.service;
 
 import bootcamp.java.mod6.restaurantorders.dto.handler.IOutputHandler;
 import bootcamp.java.mod6.restaurantorders.entity.IEntity;
-import bootcamp.java.mod6.restaurantorders.fakedb.Repository;
+import bootcamp.java.mod6.restaurantorders.repository.Repository;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,7 +17,7 @@ public final class OutputService<T extends IEntity, U extends IEntity> {
         this.outputHandler = outputHandler;
     }
 
-    public Response<U> get(int id) {
+    public Response<U> get(int id) throws IOException {
         Response<U> r = new Response<U>();
         T o = repository.getById(id);
         if (o != null) {
@@ -25,7 +26,7 @@ public final class OutputService<T extends IEntity, U extends IEntity> {
         return r;
     }
 
-    public Response<List<U>> getAll() {
+    public Response<List<U>> getAll() throws IOException {
         List<U> list = new ArrayList<>();
         for (T o : repository.getAll()) {
             list.add(outputHandler.convert(o));

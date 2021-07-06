@@ -18,7 +18,7 @@ public class Pedido implements IEntity {
     }
 
     public int getId() {
-        return id;
+        return this.id;
     }
 
     public void setId(int id) {
@@ -26,7 +26,7 @@ public class Pedido implements IEntity {
     }
 
     public Mesa getMesa() {
-        return mesa;
+        return this.mesa;
     }
 
     public void setMesa(Mesa mesa) {

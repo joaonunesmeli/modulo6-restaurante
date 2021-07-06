@@ -1,6 +1,5 @@
 package bootcamp.java.mod6.restaurantorders.entity;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class Mesa implements IEntity {

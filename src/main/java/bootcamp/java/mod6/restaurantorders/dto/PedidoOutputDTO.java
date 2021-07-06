@@ -16,7 +16,7 @@ public class PedidoOutputDTO implements IEntity {
     }
 
     public double getValor() {
-        return valor;
+        return this.valor;
     }
 
     public void setValor(double valor) {
@@ -24,7 +24,7 @@ public class PedidoOutputDTO implements IEntity {
     }
 
     public List<PratoDTO> getPratos() {
-        return pratos;
+        return this.pratos;
     }
 
     public void setPratos(List<PratoDTO> pratos) {
@@ -33,11 +33,11 @@ public class PedidoOutputDTO implements IEntity {
 
     @Override
     public int getId() {
-        return 0;
+        return this.id;
     }
 
     @Override
     public void setId(int id) {
-
+        this.id = id;
     }
 }
